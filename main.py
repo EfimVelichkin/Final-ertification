@@ -7,10 +7,6 @@ from database import get_theory, create_db_connection, update_user_points, user_
 
 connection_string = f"dbname='{db_name}' user='{user}' host='{host}' password='{password}' port='{port}'"
 
-#     # for task in theory_all: #этот гандон, выкидывает в таблицу всю хуйню, выключайте его после использования. Он засирает таблицу спаса нет.
-#     #     insert_query = "INSERT INTO theory_py (content) VALUES (%s);"
-#     #     cursor.execute(insert_query, (task,))
-
 def add_user_to_db(connection, user: disnake.User):
     cursor = connection.cursor()
     try:
@@ -253,6 +249,3 @@ async def submit(ctx: commands.Context, *, code: str):
             await ctx.send(f"Ошибка компиляции кода:\n{result.stderr}")
     except Exception as e:
         await ctx.send(f"Произошла ошибка при тестировании кода: {e}")
-
-
-bot.run("MTE2MDU2Njc5MDEwODIyNTU4Nw.G1VElo.6sqgWzlxEXuUrhmlB2OC2EJCQa0H6OC33h5-NU")
